@@ -1,0 +1,711 @@
+
+    /* Esquema de colores */
+    :root {
+        --color-fondo: #e5e5f7;
+        --color-fondo-container-1: rgba(255, 255, 255, 1);
+        --color-fondo-container-2: rgba(255, 255, 255, 0.9);
+        --color-fondo-container-3: rgba(255, 255, 255, 0.8);
+        --color-gradiente: #fb887d55;
+        --color-texto: #444;
+        --color-primario: #fb887d;  /* Opción 2: #7f55b1*/
+        --color-secundario: #f5f5f5;
+        --color-box-shadow-1: rgba(0, 0, 0, 0.2);
+        --color-box-shadow-2: rgba(251, 136, 125, 0.3);
+        --color-borde-form: #ccc;
+        --color-hover-fondo: #f9fafb;
+        --color-hover-color: #4b5563;
+        --color-resultado: #3dd260;
+        --color-resultado-parcial: rgb(234 98 31);
+        --color-resultado-incorrecto: rgb(223 45 29);
+        --color-error: #ff0000;
+        --color-succes: #008000;
+    }
+    
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+  
+    /* Fondo dinámico */
+    body {
+        font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        background-color: var(--color-fondo);
+        background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ffffff 25px ), repeating-linear-gradient( var(--color-gradiente), var(--color-primario) );
+        background-size: cover;
+        background-attachment: fixed;
+        color: var(--color-texto);
+        text-align: center;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Contenedor título */
+    .top-titulo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        background: var(--color-fondo-container-1);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px var(--color-box-shadow-1);
+        padding: 20px 30px;
+        width: 70%;
+        text-align: center;
+        position: absolute;
+        top: 12px;
+        gap: 20%;
+    }
+
+    /* Enlace del titulo */
+    .top-titulo #enlace-titulo {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 50%;
+        gap: 7%;
+    }
+
+    /* Título del contenedor de titulo */
+    .top-titulo h1 {
+        font-size: 4rem;
+        font-family: 'Rubik Doodle Shadow', cursive;
+        color: var(--color-primario);
+        margin-bottom: 0px;
+        text-shadow: none;
+    }
+
+    /* Botón para desplegar el nav en responsive */
+    #dropdown-nav {
+        display: none;
+    }
+
+    /* Nav del contenedor de titulo */
+    .top-titulo nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        color: var(--color-primario);
+        margin-bottom: 0px;
+        text-shadow: none;
+        width: 20%;
+        gap: 20%;
+    }
+
+    /* Enlaces del nav del contenedor de titulo */
+    .top-titulo .enlaces-nav{
+        transition: transform 0.2s ease;
+    }
+
+    .top-titulo .enlaces-nav:hover{
+        transform: scale(1.25); 
+        z-index: 1;
+    }
+
+    .top-titulo .enlaces-nav svg{
+        scale: 1.4; 
+    }
+
+    .top-titulo a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .top-titulo a:link, .top-titulo a:visited {
+        color: var(--color-primario);
+        text-decoration-line: none;
+    }
+
+    #puntos-posibles {
+        font-size: 24px;
+    }
+    
+    /* Contenedor principal */
+    .container {
+        background: var(--color-fondo-container-3);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px var(--color-box-shadow-1);
+        padding: 20px 30px;
+        width: 45%;
+        animation: pop-in 0.8s ease-out;
+    }
+
+    .container.intensidad-1 {
+        background: var(--color-fondo-container-2);
+    }
+
+    .container.animacion-1 {
+        animation: fade-in 0.5s ease-out;
+    }
+  
+    /* Título */
+    h1 {
+        font-size: 2.5rem;
+        font-family: 'Rubik Doodle Shadow', cursive;
+        color: var(--color-primario);
+        margin-bottom: 20px;
+        /*text-shadow: 2px 2px 5px var(--color-box-shadow-1);*/
+    }
+    
+    /* Botones */
+    button {
+        background: var(--color-primario);
+        color: var(--color-fondo-container-1);
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: transform 0.2s ease;
+    }
+    
+    button:hover {
+        transform: scale(1.10);
+    }
+    
+    button:active {
+        transform: scale(0.95);
+    }
+
+    /* Botón de selección de modo */
+    #start-btn, #start-game-btn {
+        display: inline-block;
+        margin: 10px auto;
+    }
+
+    /* Botón de confirmar respuesta */
+    #submit-btn {
+        margin-top: 0px;
+        margin-left: 12px;
+    }
+    
+    /* Contenedor de selección de modo */
+    .seleccion {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        padding: 0px;
+        /*border: 2px dashed var(--color-primario);*/
+        background-color: var(--color-fondo-container-1);
+        box-shadow: 0 4px 8px var(--color-box-shadow-1);
+    }
+
+    /* Contenedor de respuesta */
+    #answer-container {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        justify-content: center;
+    }
+
+    /* Modo selección y contenedores */
+    #mode-selection{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border: none;
+    }
+
+    #mode-selection, #game-container, #game-over {
+        margin-top: 20px;
+    }
+    
+    #mode-selection label {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+    
+    #mode-selection input[type="radio"] {
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    /* Estilos radio cards */
+    .radio-options {
+        display: grid;
+        width: 100%;
+        gap: 1.5rem;
+    }
+    
+    .radio-input {
+        display: none;
+    }
+    
+    .radio-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 20px;
+        transition: color 0.2s ease;
+    }
+    
+    .radio-content {
+        display: block;
+    }
+    
+    .radio-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        width: 100%;
+    }
+    
+    .radio-description {
+        width: 100%;
+    }
+    
+    .radio-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-left: 0.75rem; 
+    }
+    
+    /* Estados interactivos */
+    .radio-label:hover {
+        color: var(--color-hover-color);
+        background-color: var(--color-hover-fondo);
+    }
+    
+    .radio-input:checked + .radio-label {
+        color: var(--color-primario);
+        border: 2px dashed var(--color-primario);
+    }
+    
+    /* Inputs y selección de modo */
+    #answer-input, input[type="radio"] {
+        margin: 10px 0;
+        padding: 10px;
+        border: 2px solid var(--color-primario);
+        border-radius: 5px;
+        font-size: 1rem;
+        width: 80%;
+    }
+
+    #answer-input:focus {
+        outline: 1.5px solid var(--color-primario);
+    }
+
+    input[type="radio"] {
+        width: 5%;
+    }
+    
+    input[type="radio"] + label {
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: var(--color-texto);
+    }
+
+    #first-part, #score {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--color-texto);
+        font-weight: bold;
+    }
+    
+    #result {
+        font-size: 1.2rem;
+        color: var(--color-resultado);
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    /* Efecto de puntuacion */
+    #puntuacion-display {
+        position: absolute;
+        right: 34%;
+        top: 28%;
+        font-size: 100px;
+        color: var(--color-primario);
+        /*text-shadow: 0 0 20px var(--color-primario);*/
+        font-family: 'Rubik Doodle Shadow', cursive;
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+        user-select: none; 
+        z-index: 1000;
+        animation: puntuacionEffect 1s ease-out forwards;
+    }
+
+    @keyframes puntuacionEffect {
+        0% { opacity: 1; transform: scale(2); }
+        100% { opacity: 0; transform: scale(1); }
+    }
+
+    /* Pantalla de juego finalizado */
+    #game-over {
+        padding: 20px;
+        margin-top: 20px;
+        /*animation: fade-in 2s ease-out;*/
+    }
+
+    #final-score {
+        color: var(--color-primario);
+        font-family: 'Rubik Doodle Shadow', cursive;
+        font-size: 3rem;
+        animation: fade-in 2s ease-out;
+    }
+    
+    #game-over h2 {
+        font-size: 1.75rem;
+        color: var(--color-texto);
+    }
+    
+    #game-over-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+        margin-top: 40px;
+    }
+
+    #game-over span {
+        display: block;
+        margin-top: 20px;
+    }
+
+    /* Footer */
+    #footer-container{
+        /*display: flex;*/
+        display:none;
+        justify-content: center;
+        background: var(--color-fondo-container-1);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px var(--color-box-shadow-1);
+        padding: 5px 0px 10px 0px;
+        animation: pop-in-footer 0.5s ease-out;
+        text-align: center;
+        position: absolute;
+        bottom: 24px;
+        opacity: 85%;
+        transition: opacity 0.2s ease;
+        width: 50%;
+    }
+
+    #footer-container p{
+        position: absolute;
+        top: -27px;
+        padding: 10px 15px;
+        background: var(--color-fondo-container-1);
+        border-radius: 12px;
+        font-size: 1.7rem;
+        color: var(--color-primario);
+        font-weight: bold;
+        font-family: 'Rubik Doodle Shadow', cursive;
+        letter-spacing: 1px;
+        word-spacing: 4px;
+        width: 100%;
+    }
+
+    /* Refrán del dia */
+    .frase-rotativa {
+        font-size: 1.35rem;
+        padding: 1.25rem 1rem 0.4rem;
+        font-weight: bold;
+        font-style: italic;
+        text-align: center;
+    }
+
+    .fecha-rotativa {
+        font-size: 1.25rem;
+    }
+
+    .nombre-resaltado{
+        font-family: 'Rubik Doodle Shadow', cursive;
+        color: var(--color-primario);
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 0px 5px;
+    }
+
+    .visually-hidden, .visually-hidden-focusable {
+        position: absolute;
+        width: 1px; height: 1px;
+        margin: -1px; padding: 0;
+        border: 0;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    /* Animaciones */
+    @keyframes pop-in {
+        from {
+        opacity: 0;
+        transform: scale(0.9);
+        }
+        to {
+        opacity: 1;
+        transform: scale(1);
+        }
+    }
+
+    @keyframes pop-in-footer {
+        from {
+        opacity: 0;
+        transform: scale(0.9);
+        }
+        to {
+        opacity: 0.85;
+        transform: scale(1);
+        }
+    }
+  
+    /* Animación para el fade-in de la pantalla final */
+    @keyframes fade-in {
+        from {
+        opacity: 0;
+        transform: scale(0.95);
+        }
+        to {
+        opacity: 1;
+        transform: scale(1);
+        }
+    }
+
+    /****************************************************************************************/
+    /* Responsive para tablets */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        /* Toda la página */
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            justify-content: space-between;
+            gap: 5%;
+        }
+
+        /* Contenedor título */
+        .top-titulo {
+            position: static;
+            justify-content: space-between;
+        }
+
+        .top-titulo h1 {
+            font-size: 2.8rem;
+        }
+
+        .top-titulo img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .top-titulo .enlaces-nav svg {
+            scale: 1.1;
+        }
+
+        /* Contenedor principal */
+        .container {
+            width: auto;
+        }
+
+        .ancho-1 {
+            scale: none;
+        }
+
+        #icono-easteregg {
+            display: none;
+        }
+
+        #first-part, #score {
+            font-size: 1.2rem;
+        }
+
+        /* Modo selección y contenedores */
+        #mode-selection{
+            grid-template-columns: none;
+        }
+
+        #game-over {
+            padding: 15px 0px;
+        }
+
+        .nombre-resaltado {
+            font-size: 1.4rem;
+        }
+        
+        /* Footer */
+        #footer-container {
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: static;
+            width: auto;
+            scale: .9;
+            margin-bottom: 3%;
+        }
+
+        #footer-container p {
+            position: static;
+            font-size: 1.7rem;
+        }
+
+        .fecha-rotativa {
+            display: block;
+        }
+
+        .frase-rotativa {
+            padding-top: 0.4rem;
+            font-size: 1.35rem;
+        }
+
+        /* Añadir algo de aire al final del scroll de las paginas */
+        .scroll-buffer {
+            visibility: hidden;
+            height: 5%;
+            width: 100%;
+        }
+    }
+    /****************************************************************************************/
+    
+
+    /****************************************************************************************/
+    /* Responsive para móviles */
+    @media (max-width: 767px) {
+        /* Toda la página */
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100vh;
+            height: calc(var(--vh, 1vh) * 100);
+            min-height: 0;
+            justify-content: space-between;
+            gap: 5%;
+        }
+
+        /* Contenedor título */
+        .top-titulo {
+            position: static;
+            width: 100%;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: auto auto;
+            gap: 15%;
+        }
+
+        .top-titulo #enlace-titulo {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            width: 100%;
+            gap: 8%;
+            padding-right: 1rem;
+        }
+
+        .top-titulo h1 {
+            font-size: 2rem;
+        }
+
+        .top-titulo img {
+            width: 32.5px;
+            height: 32.5px;
+        }
+
+        /* Botón para desplegar el nav en responsive */
+        #dropdown-nav {
+            display: block;
+            margin: 0px;
+            padding: 0px 5px;
+            height: 36px;
+            width: 36px;
+            border-radius: 100%;
+        }
+
+        .top-titulo nav {
+            display: none;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            justify-content: center;
+            grid-column: span 2 / span 2;
+            grid-row-start: 2;
+        }
+
+        #nav-menu.open {
+            display: flex;
+        }
+
+        .top-titulo .enlaces-nav svg {
+            scale: 1.2;
+        }
+
+        /* Contenedor principal */
+        .container {
+            width: auto;
+            scale: .85;
+        }
+
+        .ancho-1 {
+            scale: none;
+        }
+
+        #icono-easteregg {
+            display: none;
+        }
+
+        #first-part, #score {
+            font-size: 1.2rem;
+        }
+
+        /* Modo selección y contenedores */
+        #mode-selection{
+            grid-template-columns: none;
+        }
+
+        #game-over {
+            padding: 15px 0px;
+        }
+
+        .nombre-resaltado {
+            font-size: 1.4rem;
+        }
+        
+        /* Footer */
+        #footer-container {
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: static;
+            width: auto;
+            scale: .9;
+        }
+
+        #footer-container p {
+            position: static;
+            font-size: 1.5rem;
+        }
+
+        .fecha-rotativa {
+            display: none;
+        }
+
+        .frase-rotativa {
+            padding-top: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        /* Añadir algo de aire al final del scroll de las paginas */
+        .scroll-buffer {
+            visibility: hidden;
+            height: 5%;
+            width: 100%;
+        }
+    }
+    /****************************************************************************************/

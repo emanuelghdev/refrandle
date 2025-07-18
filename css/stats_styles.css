@@ -1,0 +1,183 @@
+    /* Esquema de colores de las gráficas */
+    :root {
+        --color-linea-usuarios-fondo: rgba(113, 189, 251, 0.3);
+        --color-linea-usuarios-borde: rgb(30, 180, 255);
+        --color-linea-usuarios-puntos: rgb(30, 180, 255);
+        --color-linea-propio-fondo: rgba(56, 102, 77, 0.4);
+        --color-linea-propio-borde: rgba(50, 166, 101, 1);
+        --color-linea-propio-puntos: rgba(50, 166, 101, 1);
+        --color-barras-fondo: rgba(50, 166, 101, 0.6);
+        --color-barras-borde: rgba(50, 166, 101, 1);
+    }
+
+    /* Contenedor principal */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--color-fondo-container-3);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px var(--color-box-shadow-1);
+        padding: 20px 30px;
+        margin-top: 10%;
+        width: 75%;
+        animation: pop-in 0.8s ease-out;
+    }
+
+    .container h1 {
+        margin-bottom: 0px;
+    }
+
+    .container h2 {
+        margin-bottom: 20px;
+    }
+
+    /* Contenedor de canvas */
+    .container-canvas {
+        width: 100%;
+        height: auto;
+        margin: 15px 0; 
+    }
+
+    /* Para los canvas dentro de los contenedores */
+    .container-canvas canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;  /* Elimina espacio fantasma debajo */
+        margin-bottom: 4%;
+    }
+
+    /* Select de los modos de juego */
+    .stats-selector {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .stats-selector select {
+        padding: 10px;
+        font-size: 14px;
+        color: var(--color-texto);
+        background-color: var(--color-fondo-container-1);
+        opacity: 80%;
+        border: 3px solid #d1d5db;
+        border-radius: 8px;
+        outline: none;
+        cursor: pointer;
+        font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .stats-selector select:hover {
+        border-color: var(--color-primario);
+        box-shadow: 0 0 0 3px var(--color-box-shadow-2);
+    }
+
+    .stats-selector select:focus {
+        border-color: var(--color-primario);
+    }
+
+    /* Datos del jugador */
+    .stats-header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin: 60px 0px;
+    }
+
+    .stats-header h2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: var(--color-fondo-container-1);
+        color: var(--color-texto);
+        font-size: 1rem;
+        padding: 15px 20px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px var(--color-box-shadow-1);
+    }
+
+    .stats-header h2 span{
+        font-size: 3rem;
+        margin-right: 2rem;
+    }
+
+    /* Añadir algo de aire al final del scroll de las paginas */
+    .scroll-buffer {
+        visibility: hidden;
+        height: 5%;
+        width: 100%;
+    }
+
+
+    /****************************************************************************************/
+    /* Responsive para tablets */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .container {
+            width: 90%;
+            margin-top: 0px;
+        }
+
+        /* Datos del jugador */
+        .stats-header {
+            gap: 30px;
+        }
+
+        .stats-header h2 {
+            justify-content: center;
+        }
+
+        .stats-header h2 span{
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+    }
+    /****************************************************************************************/
+
+
+    /****************************************************************************************/
+    /* Responsive para móviles */
+    @media (max-width: 767px) {
+        /* Contenedor principal */
+        .container {
+            width: auto;
+            scale: none;
+            margin-top: 0px;
+        }
+
+        .container h1 {
+            margin: 0px;
+        }
+
+        /* Select de los modos de juego */
+        .stats-selector {
+            margin-bottom: 30px;
+            margin-right: 20px;
+        }
+
+        /* Datos del jugador */
+        .stats-header {
+            flex-direction: column;
+            margin: 30px 0px;
+            align-items: stretch;
+        }
+
+        .stats-header h2 {
+            justify-content: center;
+        }
+
+        .stats-header h2 span{
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        /* Contenedor de canvas */
+        .container-canvas {
+            height: 250px;
+        }
+    }
+    /****************************************************************************************/

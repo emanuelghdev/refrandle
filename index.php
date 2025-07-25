@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="El juego online definitivo de adivinar refranes en español. Termina los refranes de toda la vida, pon a prueba tu ingenio, compite con amigos y descubre nuevos dichos populares.">
+		<meta name="description" content="El juego online definitivo de adivinar refranes en español. Completa los refranes de toda la vida, pon a prueba tu ingenio, compite con amigos y descubre nuevos dichos populares.">
 		<title>Refrandle - Juego de Adivinar Refranes en Español</title>
 		<link rel="canonical" href="https://refrandle.es/">
 		<link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">

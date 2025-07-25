@@ -1,6 +1,6 @@
 # Refrandle
 
-![Pantalla inicio Refrandle](multimedia/imagenes/ejemplo_inicio_1.png)
+![Pantalla inicio Refrandle](multimedia/imagenes/ejemplo_inicio.png)
 
 
 ## Descripción
